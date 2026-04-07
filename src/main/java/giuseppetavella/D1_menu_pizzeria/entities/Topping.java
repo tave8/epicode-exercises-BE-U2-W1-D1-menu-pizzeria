@@ -14,8 +14,6 @@ public class Topping extends Ingrediente{
 
     @Override
     public String toString() {
-        return "Topping{" +
-                "prezzo=" + prezzo +
-                '}';
+        return "TOPPING: " + getNome() + " - €" + getPrezzo();
     }
 }

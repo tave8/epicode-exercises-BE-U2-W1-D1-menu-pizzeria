@@ -17,21 +17,22 @@ public class ConfigClass {
     }
     
     @Bean
-    public List<ElementoMenu> ottieniElementiMenu(Pizza pizzaMargherita, Bevanda sexOnTheBeach, Topping funghi) {
+    public List<ElementoMenu> ottieniElementiMenu(Pizza pizza, Bevanda sexOnTheBeach, Topping funghi) {
         return List.of(
-                pizzaMargherita,
+                pizza,
                 sexOnTheBeach,
                 funghi
         );
     }
     
     @Bean
-    public Pizza ottieniPizzaMargherita() {
-        Pizza pizzaMargherita = new Pizza(
+    public Pizza ottieniPizzaQuattroStagioni(CombinazioneTopping combinazioneTopping) {
+        Pizza pizza = new Pizza(
                 "Pizza Margherita",
-                300
+                300,
+                combinazioneTopping
         );
-        return pizzaMargherita;
+        return pizza;
     }
     
     @Bean
@@ -49,6 +50,17 @@ public class ConfigClass {
     public Topping ottieniFunghi() {
         Topping funghi = new Topping("funghi", 50, 2);
         return funghi;
+    }
+    
+    @Bean
+    public CombinazioneTopping ottieniCombinazioneToppingQuattroStagioni() {
+        List<Topping> toppings = List.of(
+                new Topping("gorgonzola", 200, 2),
+                new Topping("emmental", 200, 2),
+                new Topping("grana", 200, 2),
+                new Topping("parmigiano", 200, 2)
+        );
+        return new CombinazioneTopping("Quattro Stagioni", toppings);
     }
     
     

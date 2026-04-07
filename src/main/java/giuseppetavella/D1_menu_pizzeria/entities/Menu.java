@@ -16,6 +16,23 @@ public class Menu {
         this.nome = nome;
     }
 
+    /**
+     * Stampa il menu.
+     */
+    public void stampaMenu() {
+        System.out.println();
+        System.out.println("******** START MENU '"+getNome()+"' **************");
+        System.out.println();
+        for(ElementoMenu elementoMenu : getElementiMenu()) {
+            String msg = elementoMenu.toString();
+            System.out.println(">  " + msg);
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("******** END MENU '"+getNome()+"' **************");
+        System.out.println();
+    }
+
     public List<ElementoMenu> getElementiMenu() {
         return elementiMenu;
     }

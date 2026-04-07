@@ -19,9 +19,8 @@ public class D1MenuPizzeriaApplication {
 
 		Menu menuEstate = ctx.getBean("menuEstate", Menu.class);
 		
-		// menuEstate.stampaMenu();
+		menuEstate.stampaMenu();
 
-		System.out.println(menuEstate);
 		
 		// System.out.println(pizzaMargherita);
 		

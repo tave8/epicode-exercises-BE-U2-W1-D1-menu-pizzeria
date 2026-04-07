@@ -24,9 +24,6 @@ public class Bevanda extends ElementoMenu{
 
     @Override
     public String toString() {
-        return "Bevanda{" +
-                "percentualeAlcool=" + percentualeAlcool +
-                ", quantita=" + quantita +
-                '}';
+        return "BEVANDA: " + getNome() + " - " + getQuantita() + "ml";
     }
 }

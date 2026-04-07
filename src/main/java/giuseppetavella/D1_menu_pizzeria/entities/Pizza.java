@@ -7,15 +7,19 @@ public class Pizza extends ElementoMenu {
     private final List<Ingrediente> basePizza;
     private final List<Topping> toppings = new ArrayList<>();
     private CombinazioneTopping combinazioneTopping;
-    
-    public Pizza(String nome, double calorie) {
+
+    public Pizza(String nome, double calorie, CombinazioneTopping combinazioneTopping) {
         super(nome, calorie);
         // base pizza
         this.basePizza = List.of(
                 new Ingrediente("pomodoro", 100),
                 new Ingrediente("mozzarella", 150)
         );
-        
+        this.combinazioneTopping = combinazioneTopping;
+    }
+    
+    public Pizza(String nome, double calorie) {
+        this(nome, calorie, null);
     }
 
     public List<Ingrediente> getBasePizza() {
@@ -36,10 +40,12 @@ public class Pizza extends ElementoMenu {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "basePizza=" + basePizza +
-                ", toppings=" + toppings +
-                ", combinazioneTopping=" + combinazioneTopping +
-                '}';
+        boolean esisteCombinazioneTopping = getCombinazioneTopping() != null;
+        // esiste la combinazione topping
+        if (esisteCombinazioneTopping) {
+            return "PIZZA: " + getNome() + " (" + getCombinazioneTopping().getNome() + ")";
+        }
+        // non esiste la combinazione topping
+        return "PIZZA: " + getNome();         
     }
 }
