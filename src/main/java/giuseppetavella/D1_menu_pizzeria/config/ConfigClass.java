@@ -1,6 +1,7 @@
 package giuseppetavella.D1_menu_pizzeria.config;
 
 import giuseppetavella.D1_menu_pizzeria.entities.*;
+import giuseppetavella.D1_menu_pizzeria.enums.FormatoPizza;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,7 +31,8 @@ public class ConfigClass {
         Pizza pizza = new Pizza(
                 "Pizza Margherita",
                 300,
-                combinazioneTopping
+                combinazioneTopping,
+                FormatoPizza.XL
         );
         return pizza;
     }
