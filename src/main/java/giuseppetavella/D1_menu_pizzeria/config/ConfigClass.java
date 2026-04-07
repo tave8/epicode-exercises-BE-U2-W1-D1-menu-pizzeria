@@ -19,6 +19,10 @@ public class ConfigClass {
     
     @Bean
     public List<ElementoMenu> ottieniElementiMenu(Pizza pizza, Bevanda sexOnTheBeach, Topping funghi) {
+        // posso creare bean in metodo, fintanto che sia un bean
+        // a sua volta
+        // sia input che output deve essere bean
+        // sia input che output deve 
         return List.of(
                 pizza,
                 sexOnTheBeach,
