@@ -1,10 +1,11 @@
 package giuseppetavella.D1_menu_pizzeria;
 
-import giuseppetavella.D1_menu_pizzeria.entities.Menu;
-import giuseppetavella.D1_menu_pizzeria.entities.Pizza;
+import giuseppetavella.D1_menu_pizzeria.entities.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.List;
 
 @SpringBootApplication
 public class D1MenuPizzeriaApplication {
@@ -16,6 +17,19 @@ public class D1MenuPizzeriaApplication {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(D1MenuPizzeriaApplication.class);
 		
 		Double costoCoperto = ctx.getBean("costoCoperto", Double.class);
+		
+		Pizza pizzaMargherita = ctx.getBean(Pizza.class);
+		
+		List<ElementoMenu> elementiMenu = List.of(
+				pizzaMargherita
+		);
+
+		Tavolo tavolo1 = new Tavolo(1, 3);
+		Tavolo tavolo2 = new Tavolo(2, 3);
+		
+		// Ordine ordine1 = new Ordine(tavolo1, pizzaMargherita);
+		
+		
 		System.out.println(costoCoperto);
 		
 		// Pizza pizzaMargherita = ctx.getBean(Pizza.class);

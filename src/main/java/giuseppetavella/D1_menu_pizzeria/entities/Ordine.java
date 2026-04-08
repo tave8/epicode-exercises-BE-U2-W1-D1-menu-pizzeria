@@ -35,7 +35,7 @@ public class Ordine {
     /**
      * Somma dei costi dei suoi elementi + somma dei costi dei coperti
      */
-    public double calcolaImportoTotale() {
+    public double calcolaImportoTotale(Double costoCoperto) {
         double costiElementiMenu = 0;
         double costiCoperti = 0;
         

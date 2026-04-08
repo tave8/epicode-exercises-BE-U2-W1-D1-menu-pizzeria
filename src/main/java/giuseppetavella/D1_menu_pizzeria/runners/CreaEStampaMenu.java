@@ -8,6 +8,10 @@ public class CreaEStampaMenu implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("hello from runner");
+        
+        System.out.println("executing runner on startup...");
+        
+        
+        
     }
 }
