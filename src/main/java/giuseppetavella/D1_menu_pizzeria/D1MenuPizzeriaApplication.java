@@ -30,7 +30,6 @@ public class D1MenuPizzeriaApplication {
 		// Ordine ordine1 = new Ordine(tavolo1, pizzaMargherita);
 		
 		
-		System.out.println(costoCoperto);
 		
 		// Pizza pizzaMargherita = ctx.getBean(Pizza.class);
 

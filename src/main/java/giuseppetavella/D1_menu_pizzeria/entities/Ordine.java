@@ -35,9 +35,9 @@ public class Ordine {
     /**
      * Somma dei costi dei suoi elementi + somma dei costi dei coperti
      */
-    public double calcolaImportoTotale(Double costoCoperto) {
+    public double calcolaImportoTotale(double costoCoperto) {
         double costiElementiMenu = 0;
-        double costiCoperti = 0;
+        double costiCoperti = numeroCoperti * costoCoperto;
         
         for(ElementoMenu elementoMenu : getElementiMenu()) {
             if (elementoMenu instanceof HaPrezzo) {
