@@ -14,9 +14,13 @@ import java.util.logging.Logger;
 @Component
 public class CreaEStampaMenu implements CommandLineRunner {
 
+    // logger 
+    private static final Logger LOGGER = Logger.getLogger(CreaEStampaMenu.class.getName());
+    
     private Menu menu;
     private double costoCoperto;
     private List<ElementoMenu> elementiMenu;
+    
     
     /**
      * I parametri del costruttore sono le dipendenze di questo bean.
@@ -36,9 +40,9 @@ public class CreaEStampaMenu implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        
-        System.out.println("executing runner on startup...");
 
+        LOGGER.info("Executing runner '"+this.getClass().getName()+"'on startup");
+        
         // System.out.println(menu);
         // System.out.println(costoCoperto);
 
