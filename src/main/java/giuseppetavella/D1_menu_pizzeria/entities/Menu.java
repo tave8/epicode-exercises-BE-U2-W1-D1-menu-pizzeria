@@ -3,6 +3,7 @@ package giuseppetavella.D1_menu_pizzeria.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Menu {
     private final String nome;
     private final List<ElementoMenu> elementiMenu = new ArrayList<>();
