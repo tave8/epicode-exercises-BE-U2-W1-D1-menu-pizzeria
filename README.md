@@ -35,8 +35,19 @@ CombinazioneTopping
     listaTopping: lista di topping
 
 
-
-    
+Ordine (concreta)
+    tavolo
+    elementiMenu
+    numeroOrdine
+    statoOrdine: in corso, pronto, servito
+    numeroCoperti
+    dataEOraAggiunto
+    calcolaImportoTotale()
+   
+Tavolo (concreta)
+    numeroTavolo
+    numeroCopertiMassimo
+    statoTavolo: occupato, libero
     
 
 ```

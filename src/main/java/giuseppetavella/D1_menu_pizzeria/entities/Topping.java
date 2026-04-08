@@ -1,6 +1,8 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
-public class Topping extends Ingrediente{
+import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
+
+public class Topping extends Ingrediente implements HaPrezzo {
     private final double prezzo;
     
     public Topping(String nome, double calorie, double prezzo) {

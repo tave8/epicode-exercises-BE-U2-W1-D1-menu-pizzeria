@@ -1,18 +1,21 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.FormatoPizza;
+import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza extends ElementoMenu {
+public class Pizza extends ElementoMenu implements HaPrezzo {
     private final List<Ingrediente> basePizza;
     private final List<Topping> toppings = new ArrayList<>();
     private CombinazioneTopping combinazioneTopping;
     private final FormatoPizza formatoPizza;
+    private final double prezzo;
 
-    public Pizza(String nome, double calorie, CombinazioneTopping combinazioneTopping, FormatoPizza formatoPizza) {
+    public Pizza(String nome, double calorie, double prezzo, CombinazioneTopping combinazioneTopping, FormatoPizza formatoPizza) {
         super(nome, calorie);
+        this.prezzo = prezzo;
         // base pizza
         this.basePizza = List.of(
                 new Ingrediente("pomodoro", 100),
@@ -22,12 +25,12 @@ public class Pizza extends ElementoMenu {
         this.formatoPizza = formatoPizza;
     }
 
-    public Pizza(String nome, double calorie, CombinazioneTopping combinazioneTopping) {
-        this(nome, calorie, combinazioneTopping, FormatoPizza.NORMALE);
+    public Pizza(String nome, double calorie, double prezzo, CombinazioneTopping combinazioneTopping) {
+        this(nome, calorie, prezzo, combinazioneTopping, FormatoPizza.NORMALE);
     }
     
-    public Pizza(String nome, double calorie) {
-        this(nome, calorie, null, FormatoPizza.NORMALE);
+    public Pizza(String nome, double calorie, double prezzo) {
+        this(nome, calorie, prezzo, null, FormatoPizza.NORMALE);
     }
 
     public FormatoPizza getFormatoPizza() {
@@ -61,5 +64,10 @@ public class Pizza extends ElementoMenu {
         }
         // non esiste la combinazione topping
         return "PIZZA: " + getNome() + infoFormatoPizza;         
+    }
+
+    @Override
+    public double getPrezzo() {
+        return prezzo;
     }
 }
