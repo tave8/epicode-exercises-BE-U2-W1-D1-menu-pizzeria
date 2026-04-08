@@ -15,6 +15,9 @@ public class D1MenuPizzeriaApplication {
 
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(D1MenuPizzeriaApplication.class);
 		
+		Double costoCoperto = ctx.getBean("costoCoperto", Double.class);
+		System.out.println(costoCoperto);
+		
 		// Pizza pizzaMargherita = ctx.getBean(Pizza.class);
 
 		// Menu menuEstate = ctx.getBean("menuEstate", Menu.class);

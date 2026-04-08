@@ -1,6 +1,7 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
+import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,12 +35,21 @@ public class Ordine {
     /**
      * Somma dei costi dei suoi elementi + somma dei costi dei coperti
      */
-    // public double calcolaImportoTotale() {
-    //     double costiElementiMenu = 0;
-    //    
-    //     // double costiCoperti = 
-    //     // return costiElementiMenu + costiCoperti        
-    // }
+    public double calcolaImportoTotale() {
+        double costiElementiMenu = 0;
+        double costiCoperti = 0;
+        
+        for(ElementoMenu elementoMenu : getElementiMenu()) {
+            if (elementoMenu instanceof HaPrezzo) {
+                HaPrezzo elementoMenuConPrezzo = (HaPrezzo) elementoMenu;
+                costiElementiMenu += elementoMenuConPrezzo.getPrezzo();        
+            }
+        }
+        
+        // TODO: completa costo coperti
+
+        return costiElementiMenu + costiCoperti;        
+    }
 
     public void aggiungiElementiMenuAOrdine(List<ElementoMenu> elementiMenu) {
         for (ElementoMenu elementoMenu : elementiMenu) {

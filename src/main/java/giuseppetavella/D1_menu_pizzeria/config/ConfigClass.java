@@ -2,14 +2,22 @@ package giuseppetavella.D1_menu_pizzeria.config;
 
 import giuseppetavella.D1_menu_pizzeria.entities.*;
 import giuseppetavella.D1_menu_pizzeria.enums.FormatoPizza;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class ConfigClass {
+    
+    @Bean(name = "costoCoperto")
+    public double getCostoCoperto(@Value("${tavolo.coperto.costo}") String costoCoperto) {
+        return Double.parseDouble(costoCoperto);
+    }
     
     // @Bean(name = "menuEstate")
     // public Menu ottieniMenuEstate(List<ElementoMenu> elementiMenu) {
