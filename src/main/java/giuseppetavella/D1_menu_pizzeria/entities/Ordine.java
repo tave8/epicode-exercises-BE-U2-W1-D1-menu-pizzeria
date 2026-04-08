@@ -31,6 +31,12 @@ public class Ordine {
     public Ordine(Tavolo tavolo, List<ElementoMenu> elementiMenu) {
         this(tavolo, elementiMenu, 3);
     }
+    
+    public void stampaImportoTotale(double costoCoperto) {
+        System.out.println();
+        System.out.println("******** IMPORTO TOTALE ORDINE: €"+calcolaImportoTotale(costoCoperto)+" **************");
+        System.out.println();
+    }
 
     /**
      * Somma dei costi dei suoi elementi + somma dei costi dei coperti

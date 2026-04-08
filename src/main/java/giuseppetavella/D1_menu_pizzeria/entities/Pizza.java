@@ -60,10 +60,10 @@ public class Pizza extends ElementoMenu implements HaPrezzo {
         String infoFormatoPizza = esisteFormatoPizzaParticolare ? " ("+getFormatoPizza()+")" : "";
         // esiste la combinazione topping
         if (esisteCombinazioneTopping) {
-            return "PIZZA: " + getNome() + " (" + getCombinazioneTopping().getNome() + ")" + infoFormatoPizza;
+            return "PIZZA: " + getNome() + " (" + getCombinazioneTopping().getNome() + ")" + infoFormatoPizza + " - €" + getPrezzo();
         }
         // non esiste la combinazione topping
-        return "PIZZA: " + getNome() + infoFormatoPizza;         
+        return "PIZZA: " + getNome() + infoFormatoPizza + " - €" + getPrezzo();         
     }
 
     @Override

@@ -29,7 +29,7 @@ public class Bevanda extends ElementoMenu implements HaPrezzo {
 
     @Override
     public String toString() {
-        return "BEVANDA: " + getNome() + " - " + getQuantita() + "ml";
+        return "BEVANDA: " + getNome() + " - " + getQuantita() + "ml"  + " - €" + getPrezzo();
     }
 
     @Override

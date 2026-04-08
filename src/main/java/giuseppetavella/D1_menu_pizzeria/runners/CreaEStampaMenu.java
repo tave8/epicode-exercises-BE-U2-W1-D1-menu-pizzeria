@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Component
 public class CreaEStampaMenu implements CommandLineRunner {
@@ -45,10 +46,12 @@ public class CreaEStampaMenu implements CommandLineRunner {
         Tavolo tavolo2 = new Tavolo(2, 3);
 
         Ordine ordine1 = new Ordine(tavolo1, elementiMenu);
-
-        System.out.println(ordine1.calcolaImportoTotale(costoCoperto));
         
-        // System.out.println(menu.calc);
+        
+        menu.stampaMenu();
+        ordine1.stampaImportoTotale(costoCoperto);
+        
+        
         
     }
 }
