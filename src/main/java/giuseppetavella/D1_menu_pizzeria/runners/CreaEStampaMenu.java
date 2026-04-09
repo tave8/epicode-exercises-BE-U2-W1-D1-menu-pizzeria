@@ -40,17 +40,17 @@ public class CreaEStampaMenu implements CommandLineRunner {
 
         LOGGER.info("Executing runner '"+this.getClass().getName()+"'on startup");
         
-        // System.out.println(menu);
+        System.out.println(menu);
         // System.out.println(costoCoperto);
 
-        // Tavolo tavolo1 = new Tavolo(1, 3);
-        // Tavolo tavolo2 = new Tavolo(2, 3);
+        Tavolo tavolo1 = new Tavolo(1, 3);
+        Tavolo tavolo2 = new Tavolo(2, 3);
         //
-        // Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu()elementiMenu);
+        Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu());
         //
         //
-        // menu.stampaMenu();
-        // ordine1.stampaImportoTotale(costoCoperto);
+        menu.stampaMenu();
+        ordine1.stampaImportoTotale(costoCoperto);
         
         
         

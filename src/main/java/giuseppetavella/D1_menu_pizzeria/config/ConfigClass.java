@@ -21,25 +21,7 @@ public class ConfigClass {
     public String ottieniNomeMenu() {
         return "Menu Standard";
     }
-
-    /**
-     * ELEMENTI DEL MENU
-     */
-    @Bean(name = "ottieniElementiMenu")
-    public List<ElementoMenu> ottieniElementiMenu() {
-        // posso creare bean in metodo, fintanto che sia un bean
-        // a sua volta
-        // sia input che output deve essere bean
-        // sia input che output deve 
-        return List.of(
-                new Pizza("Pizza Margherita", 200, 20),
-                new Bevanda("sex on the beach", 100, 10, 200),
-                new Topping("funghi", 50, 5),
-                new Pizza("Pizza Imperiale", 100, 20),
-                new Bevanda("mojito", 40, 10, 5)
-        );
-    }
-
+    
     /**
      * COSTO DEL COPERTO
      */
@@ -47,19 +29,36 @@ public class ConfigClass {
     public double ottieniCostoCoperto(@Value("${tavolo.coperto.costo}") String costoCoperto) {
         return Double.parseDouble(costoCoperto);
     }
-    
-    
 
 
-    // @Bean(name = "pizzaMargherita")
-    // public Pizza ottieniPizzaMargherita() {
-    //     Pizza pizza = new Pizza(
-    //             "Pizza Margherita",
-    //             300,
-    //             5.90
-    //     );
-    //     return pizza;
-    // }
+    /**
+     * PIZZA MARGHERITA
+     */
+    @Bean(name = "ottieniPizzaMargherita")
+    public Pizza ottieniPizzaMargherita() {
+        Pizza pizza = new Pizza(
+                "Pizza Margherita",
+                300,
+                5.90
+        );
+        return pizza;
+    }
+
+    /**
+     * MOJITO
+     */
+    @Bean(name = "ottieniMojito")
+    public Bevanda ottieniMojito() {
+        Bevanda bevanda = new Bevanda(
+                            "mojito",
+                            300,
+                            400,
+                            20
+        );
+        return bevanda;
+    }
+
+
     //
     //
     // @Bean
