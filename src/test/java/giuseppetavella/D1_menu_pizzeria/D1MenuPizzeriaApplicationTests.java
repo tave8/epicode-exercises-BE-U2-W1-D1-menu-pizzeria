@@ -2,10 +2,14 @@ package giuseppetavella.D1_menu_pizzeria;
 
 import giuseppetavella.D1_menu_pizzeria.entities.Menu;
 import giuseppetavella.D1_menu_pizzeria.entities.Ordine;
+import giuseppetavella.D1_menu_pizzeria.entities.Pizza;
 import giuseppetavella.D1_menu_pizzeria.entities.Tavolo;
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
-import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenziale;
+import giuseppetavella.D1_menu_pizzeria.exceptions.PrezzoPizzaTroppoPiccoloException;
+import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenzialeException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -47,11 +51,11 @@ class D1MenuPizzeriaApplicationTests {
 		// lo stato dell'ordine non può passare a servito o pagato,
 		// senza prima essere pronto
 		assertThrows(
-				StatoOrdineNonSequenziale.class,
+				StatoOrdineNonSequenzialeException.class,
 				() -> ordine1.setStatoOrdine(StatoOrdine.SERVITO)
 		);
 		assertThrows(
-				StatoOrdineNonSequenziale.class,
+				StatoOrdineNonSequenzialeException.class,
 				() -> ordine1.setStatoOrdine(StatoOrdine.PAGATO)
 		);
 	}
@@ -67,6 +71,21 @@ class D1MenuPizzeriaApplicationTests {
 		);
 	}
 	
-	
+	@ParameterizedTest
+	@CsvSource({
+		"2", "1.99"	
+	})
+	public void prezzoPizzaFallisceSeTroppoPiccolo(double prezzoPizza) {
+		assertThrows(
+				PrezzoPizzaTroppoPiccoloException.class, 
+				() -> {
+					new Pizza(
+							"pizza test",
+							100,
+							prezzoPizza
+					);
+				}
+		);
+	} 
 
 }

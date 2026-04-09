@@ -1,7 +1,7 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
-import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenziale;
+import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenzialeException;
 import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
 import java.time.LocalDateTime;
@@ -103,7 +103,7 @@ public class Ordine {
         return statoOrdine;
     }
 
-    public void setStatoOrdine(StatoOrdine nuovoStatoOrdine) throws StatoOrdineNonSequenziale {
+    public void setStatoOrdine(StatoOrdine nuovoStatoOrdine) throws StatoOrdineNonSequenzialeException {
         // imposta la logica sequenziale dello stato ordine:
         // IN CORSO -> PRONTO -> SERVITO -> PAGATO 
 
@@ -133,7 +133,7 @@ public class Ordine {
         }
         
         if(!statiOrdineSonoSequenziali) {
-            throw new StatoOrdineNonSequenziale(getStatoOrdine(), nuovoStatoOrdine);
+            throw new StatoOrdineNonSequenzialeException(getStatoOrdine(), nuovoStatoOrdine);
         }
         
         this.statoOrdine = nuovoStatoOrdine;

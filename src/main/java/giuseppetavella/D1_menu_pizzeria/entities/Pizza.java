@@ -1,6 +1,7 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.FormatoPizza;
+import giuseppetavella.D1_menu_pizzeria.exceptions.PrezzoPizzaTroppoPiccoloException;
 import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
 import java.util.ArrayList;
@@ -13,7 +14,15 @@ public class Pizza extends ElementoMenu implements HaPrezzo {
     private final FormatoPizza formatoPizza;
     private final double prezzo;
 
-    public Pizza(String nome, double calorie, double prezzo, CombinazioneTopping combinazioneTopping, FormatoPizza formatoPizza) {
+    public Pizza(String nome, 
+                 double calorie, 
+                 double prezzo, 
+                 CombinazioneTopping combinazioneTopping, 
+                 FormatoPizza formatoPizza) throws PrezzoPizzaTroppoPiccoloException
+    {
+        if(prezzo <= 2.00) {
+              throw new PrezzoPizzaTroppoPiccoloException(prezzo);  
+        }
         super(nome, calorie);
         this.prezzo = prezzo;
         // base pizza
