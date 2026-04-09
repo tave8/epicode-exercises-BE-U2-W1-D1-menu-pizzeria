@@ -15,7 +15,7 @@ public class Tavolo {
     }
 
     public Tavolo(long numeroTavolo, long numeroCopertiMassimo) {
-        this(numeroTavolo, numeroCopertiMassimo, StatoTavolo.OCCUPATO);
+        this(numeroTavolo, numeroCopertiMassimo, StatoTavolo.LIBERO);
     }
 
     public long getNumeroCopertiMassimo() {

@@ -1,6 +1,8 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
+import giuseppetavella.D1_menu_pizzeria.enums.StatoTavolo;
+import giuseppetavella.D1_menu_pizzeria.exceptions.OrdinePerTavoloOccupatoException;
 import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenzialeException;
 import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
@@ -21,7 +23,13 @@ public class Ordine {
     private long numeroCoperti;
     private final LocalDateTime dataEOraAggiunto;
     
-    public Ordine(Tavolo tavolo, List<ElementoMenu> elementiMenu, long numeroCoperti) {
+    public Ordine(Tavolo tavolo, 
+                  List<ElementoMenu> elementiMenu, 
+                  long numeroCoperti) throws OrdinePerTavoloOccupatoException
+    {
+        if(tavolo.getStatoTavolo() == StatoTavolo.OCCUPATO) {
+            throw new OrdinePerTavoloOccupatoException(tavolo);
+        }
         this.setTavolo(tavolo);
         this.aggiungiElementiMenuAOrdine(elementiMenu);
         this.setStatoOrdine(StatoOrdine.IN_CORSO);

@@ -5,6 +5,8 @@ import giuseppetavella.D1_menu_pizzeria.entities.Ordine;
 import giuseppetavella.D1_menu_pizzeria.entities.Pizza;
 import giuseppetavella.D1_menu_pizzeria.entities.Tavolo;
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
+import giuseppetavella.D1_menu_pizzeria.enums.StatoTavolo;
+import giuseppetavella.D1_menu_pizzeria.exceptions.OrdinePerTavoloOccupatoException;
 import giuseppetavella.D1_menu_pizzeria.exceptions.PrezzoPizzaTroppoPiccoloException;
 import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenzialeException;
 import org.junit.jupiter.api.Test;
@@ -87,5 +89,19 @@ class D1MenuPizzeriaApplicationTests {
 				}
 		);
 	} 
+	
+	@Test
+	public void ordineFallisceSeTavoloOccupato() {
+		Tavolo tavolo1 = new Tavolo(1, 3);
+		tavolo1.setStatoTavolo(StatoTavolo.OCCUPATO);
+		// l'ordine non può essere fatto se lo stato del tavolo 
+		// associato all'ordine, è occupato
+		assertThrows(
+				OrdinePerTavoloOccupatoException.class,
+				() -> {
+					Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu());
+				}
+		);
+	}
 
 }
