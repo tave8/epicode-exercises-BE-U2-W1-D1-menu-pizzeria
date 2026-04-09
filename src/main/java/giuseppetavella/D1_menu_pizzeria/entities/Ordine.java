@@ -1,11 +1,14 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
 import giuseppetavella.D1_menu_pizzeria.enums.StatoOrdine;
+import giuseppetavella.D1_menu_pizzeria.exceptions.StatoOrdineNonSequenziale;
 import giuseppetavella.D1_menu_pizzeria.interfaces.HaPrezzo;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Ordine {
     
@@ -100,7 +103,39 @@ public class Ordine {
         return statoOrdine;
     }
 
-    public void setStatoOrdine(StatoOrdine statoOrdine) {
-        this.statoOrdine = statoOrdine;
+    public void setStatoOrdine(StatoOrdine nuovoStatoOrdine) throws StatoOrdineNonSequenziale {
+        // imposta la logica sequenziale dello stato ordine:
+        // IN CORSO -> PRONTO -> SERVITO -> PAGATO 
+
+        Map<StatoOrdine, StatoOrdine> sequenzaPerStatoOrdine = new HashMap<>(Map.of(
+                StatoOrdine.IN_CORSO, StatoOrdine.PRONTO,
+                StatoOrdine.PRONTO, StatoOrdine.SERVITO,
+                StatoOrdine.SERVITO, StatoOrdine.PAGATO
+        ));
+        
+        // il primo stato ordine non ha attuale
+        if(nuovoStatoOrdine == StatoOrdine.IN_CORSO) {
+            this.statoOrdine = nuovoStatoOrdine;
+            return;
+        }
+        
+        boolean statiOrdineSonoSequenziali = true;
+        
+        // se il nuovo stato ordine non è una chiave (ad esempio il pagato)
+        // perché non c'è uno prossimo stato ordine dopo pagato
+        if(sequenzaPerStatoOrdine.get(nuovoStatoOrdine) == null) {
+            statiOrdineSonoSequenziali = false; 
+        } 
+        // se lo stato di ordine attuale non ha come prossimo stato ordine
+        // il nuovo stato ordine desiderato
+        else if (sequenzaPerStatoOrdine.get(getStatoOrdine()) != nuovoStatoOrdine) {
+            statiOrdineSonoSequenziali = false;
+        }
+        
+        if(!statiOrdineSonoSequenziali) {
+            throw new StatoOrdineNonSequenziale(getStatoOrdine(), nuovoStatoOrdine);
+        }
+        
+        this.statoOrdine = nuovoStatoOrdine;
     }
 }
