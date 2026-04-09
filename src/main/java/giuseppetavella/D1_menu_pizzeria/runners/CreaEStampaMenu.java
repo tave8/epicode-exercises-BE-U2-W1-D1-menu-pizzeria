@@ -19,7 +19,6 @@ public class CreaEStampaMenu implements CommandLineRunner {
     
     private Menu menu;
     private double costoCoperto;
-    private List<ElementoMenu> elementiMenu;
     
     
     /**
@@ -29,13 +28,11 @@ public class CreaEStampaMenu implements CommandLineRunner {
      * Il parametro menu che passo al costruttore, qui si verifica
      * la Constructor Injection, che è un modo di implementare la Dependency Injection.
      */
-    public CreaEStampaMenu(Menu menu, 
-                           @Qualifier("costoCoperto") double costoCoperto, 
-                           List<ElementoMenu> elementiMenu) 
+    public CreaEStampaMenu(Menu menu,
+                           @Qualifier("ottieniCostoCoperto") double costoCoperto) 
     {
         this.menu = menu;
         this.costoCoperto = costoCoperto;
-        this.elementiMenu = elementiMenu;
     }
 
     @Override
@@ -46,14 +43,14 @@ public class CreaEStampaMenu implements CommandLineRunner {
         // System.out.println(menu);
         // System.out.println(costoCoperto);
 
-        Tavolo tavolo1 = new Tavolo(1, 3);
-        Tavolo tavolo2 = new Tavolo(2, 3);
-
-        Ordine ordine1 = new Ordine(tavolo1, elementiMenu);
-        
-        
-        menu.stampaMenu();
-        ordine1.stampaImportoTotale(costoCoperto);
+        // Tavolo tavolo1 = new Tavolo(1, 3);
+        // Tavolo tavolo2 = new Tavolo(2, 3);
+        //
+        // Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu()elementiMenu);
+        //
+        //
+        // menu.stampaMenu();
+        // ordine1.stampaImportoTotale(costoCoperto);
         
         
         

@@ -13,19 +13,19 @@ import java.util.List;
 @Configuration
 @PropertySource("application.properties")
 public class ConfigClass {
-    
-    @Bean(name = "costoCoperto")
-    public double getCostoCoperto(@Value("${tavolo.coperto.costo}") String costoCoperto) {
-        return Double.parseDouble(costoCoperto);
+
+    /**
+     * NOME DEL MENU
+     */
+    @Bean(name = "ottieniNomeMenu")
+    public String ottieniNomeMenu() {
+        return "Menu Standard";
     }
-    
-    @Bean(name = "menuEstate")
-    public Menu ottieniMenuEstate(List<ElementoMenu> elementiMenu) {
-        Menu menu = new Menu("Menu Estate", elementiMenu);
-        return menu;
-    }
-    
-    @Bean
+
+    /**
+     * ELEMENTI DEL MENU
+     */
+    @Bean(name = "ottieniElementiMenu")
     public List<ElementoMenu> ottieniElementiMenu() {
         // posso creare bean in metodo, fintanto che sia un bean
         // a sua volta
@@ -39,6 +39,16 @@ public class ConfigClass {
                 new Bevanda("mojito", 40, 10, 5)
         );
     }
+
+    /**
+     * COSTO DEL COPERTO
+     */
+    @Bean(name = "ottieniCostoCoperto")
+    public double ottieniCostoCoperto(@Value("${tavolo.coperto.costo}") String costoCoperto) {
+        return Double.parseDouble(costoCoperto);
+    }
+    
+    
 
 
     // @Bean(name = "pizzaMargherita")

@@ -14,7 +14,7 @@ public class D1MenuPizzeriaApplication {
 		SpringApplication.run(D1MenuPizzeriaApplication.class, args);
 
 
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(D1MenuPizzeriaApplication.class);
+		// AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(D1MenuPizzeriaApplication.class);
 		
 		
 	}

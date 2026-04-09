@@ -1,21 +1,23 @@
 package giuseppetavella.D1_menu_pizzeria.entities;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class Menu {
     private final String nome;
     private final List<ElementoMenu> elementiMenu = new ArrayList<>();
 
-    public Menu(String nome, List<ElementoMenu> elementiMenu) {
+    public Menu(@Qualifier("ottieniNomeMenu") String nome, 
+                List<ElementoMenu> elementiMenu) 
+    {
         this.nome = nome;
         this.aggiungiElementiMenu(elementiMenu);
     }
     
-    public Menu(String nome) {
-        this.nome = nome;
-    }
 
     /**
      * Stampa il menu.
