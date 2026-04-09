@@ -39,7 +39,7 @@ class D1MenuPizzeriaApplicationTests {
 	}
 	
 	@Test
-	public void nuovoStatoOrdineESequenziale() {
+	public void nuovoStatoOrdineFallisceSeNonSequenziale() {
 		Tavolo tavolo1 = new Tavolo(1, 3);
 		Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu());
 
@@ -53,6 +53,17 @@ class D1MenuPizzeriaApplicationTests {
 		assertThrows(
 				StatoOrdineNonSequenziale.class,
 				() -> ordine1.setStatoOrdine(StatoOrdine.PAGATO)
+		);
+	}
+
+	@Test
+	public void nuovoStatoOrdineESequenziale() {
+		Tavolo tavolo1 = new Tavolo(1, 3);
+		Ordine ordine1 = new Ordine(tavolo1, menu.getElementiMenu());
+		// lo stato dell'ordine appena creato è in corso, 
+		// quindi il prossimo stato che posso assegnare è pronto
+		assertDoesNotThrow(
+				() -> ordine1.setStatoOrdine(StatoOrdine.PRONTO)
 		);
 	}
 	
